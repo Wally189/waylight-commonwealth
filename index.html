@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WayLight Catholic Commonwealth</title>
+  <meta name="description" content="A lay Benedictine-inspired commonwealth: a quiet, practical way for Catholics to live a Rule in the world, support one another, and do good in our neighbourhoods." />
+
+  <!-- WayLight Family (lightweight, copy-paste friendly) -->
+  <style>
+    :root{
+      /* WayLight-ish mid-century civic palette (edit freely) */
+      --ink:#10202a;
+      --paper:#fbf7ee;
+      --wash:#f0eadc;
+      --sea:#0d5f6a;
+      --gold:#b7902f;
+      --burgundy:#6f1d2c;
+      --line:rgba(16,32,42,.14);
+      --shadow:0 12px 28px rgba(0,0,0,.10);
+      --radius:18px;
+
+      --max: 1040px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      --serif: ui-serif, "Georgia", "Times New Roman", Times, serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 600px at 18% 8%, rgba(13,95,106,.10), transparent 60%),
+        radial-gradient(900px 500px at 82% 18%, rgba(183,144,47,.12), transparent 62%),
+        linear-gradient(180deg, var(--paper), var(--wash));
+      line-height:1.55;
+    }
+
+    a{ color:var(--sea); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; }
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(251,247,238,.84);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .wrap{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:14px 24px;
+    }
+
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .mark{
+      width:42px; height:42px; border-radius:12px;
+      background:linear-gradient(135deg, var(--sea), #083f48);
+      box-shadow:var(--shadow);
+      display:grid; place-items:center;
+      color:#fff; font-weight:800;
+      letter-spacing:.06em;
+      font-family:var(--serif);
+    }
+    .brand h1{ margin:0; font-size:16px; letter-spacing:.02em; }
+    .brand small{ display:block; opacity:.78; font-size:12px; margin-top:2px; }
+
+    nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
+    nav a{
+      padding:8px 10px; border-radius:12px;
+      border:1px solid transparent;
+      font-size:13px;
+    }
+    nav a:hover{ border-color:var(--line); text-decoration:none; background:rgba(13,95,106,.06); }
+
+    .hero{ padding:32px 0 14px; }
+    .heroGrid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.25fr .75fr;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns:1fr; }
+      nav{ justify-content:flex-start; }
+    }
+
+    .card{
+      background:rgba(251,247,238,.86);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px;
+    }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      opacity:.85;
+    }
+    .dot{ width:10px; height:10px; border-radius:99px; background:var(--gold); box-shadow:0 0 0 6px rgba(183,144,47,.14); }
+
+    .hero h2{
+      font-family:var(--serif);
+      font-size:42px;
+      line-height:1.08;
+      margin:10px 0 10px;
+    }
+    .hero p{ margin:0; font-size:16px; opacity:.94; }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 10px 20px rgba(0,0,0,.07);
+      font-weight:650;
+      font-size:14px;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, var(--sea), #094c55);
+      border-color:rgba(0,0,0,.06);
+      color:#fff;
+    }
+    .btn.ghost{
+      background:rgba(251,247,238,.72);
+    }
+
+    .aside h3{
+      margin:0 0 10px;
+      font-size:14px; letter-spacing:.12em; text-transform:uppercase;
+      opacity:.78;
+    }
+    .pill{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px; border-radius:16px;
+      border:1px dashed rgba(16,32,42,.22);
+      background:rgba(183,144,47,.08);
+      margin-bottom:10px;
+    }
+    .pill b{ display:block; font-size:13px; }
+    .pill span{ font-size:13px; opacity:.86; }
+
+    section{ padding:12px 0; }
+    .grid2{
+      display:grid; gap:16px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px){
+      .grid2{ grid-template-columns:1fr; }
+    }
+
+    h3{
+      font-family:var(--serif);
+      margin:0 0 10px;
+      font-size:22px;
+    }
+    .muted{ opacity:.82; }
+
+    ul{ margin:10px 0 0 18px; padding:0; }
+    li{ margin:6px 0; }
+
+    .ruleBox{
+      border-left:6px solid var(--burgundy);
+      padding:14px 14px 14px 14px;
+      background:rgba(111,29,44,.06);
+      border-radius:14px;
+    }
+
+    .fineprint{
+      font-size:12px; opacity:.82;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+      margin-top:10px;
+    }
+
+    .footer{
+      margin-top:22px;
+      padding:18px 0 34px;
+      border-top:1px solid var(--line);
+      font-size:13px;
+      opacity:.92;
+    }
+
+    .mono{ font-family:var(--mono); font-size:12px; opacity:.85; }
+    .tag{
+      display:inline-flex; align-items:center;
+      padding:6px 10px;
+      border-radius:99px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.6);
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="WayLight Catholic Commonwealth">
+        <div class="mark" aria-hidden="true">W</div>
+        <div>
+          <h1>WayLight Catholic Commonwealth</h1>
+          <small>Lay Benedictine-inspired life • prayer • stability • good works</small>
+        </div>
+      </div>
+      <nav aria-label="Site navigation">
+        <a href="#what">What it is</a>
+        <a href="#for">Who it’s for</a>
+        <a href="#rule">The Rule</a>
+        <a href="#rhythm">Rhythm</a>
+        <a href="#works">Works of mercy</a>
+        <a href="#join">Join privately</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="heroGrid">
+        <div class="card">
+          <div class="kicker"><span class="dot"></span> JM J • “Ora et labora” (pray and work)</div>
+          <h2>A commonwealth for Catholics who want a Rule in the world.</h2>
+          <p class="muted">
+            A quiet, practical framework—rooted in the spirit of the Rule of Saint Benedict—so ordinary Catholics can live with
+            steadiness, prayer, neighbourly charity, and mutual encouragement, without pretending to be a monastery.
+          </p>
+          <div class="ctaRow">
+            <a class="btn primary" href="#join">Start quietly</a>
+            <a class="btn ghost" href="#rule">See the Rule approach</a>
+            <a class="btn" href="#what">Read the charter</a>
+          </div>
+
+          <p class="fineprint">
+            <b>Important:</b> This is a lay-led, private devotional and formative initiative. It is <b>not</b> a religious institute,
+            does not receive vows, and does not claim official status or authority on behalf of the Catholic Church.
+          </p>
+        </div>
+
+        <aside class="card aside" aria-label="Quick summary">
+          <h3>In one glance</h3>
+
+          <div class="pill">
+            <div class="dot" style="background:var(--sea)"></div>
+            <div>
+              <b>Mother House</b>
+              <span>This site holds the shared patterns: principles, templates, rhythms, and standards.</span>
+            </div>
+          </div>
+
+          <div class="pill">
+            <div class="dot" style="background:var(--gold)"></div>
+            <div>
+              <b>Founder & steward</b>
+              <span>Built and maintained by <a href="https://alanwpgallagher.info">alanwpgallagher</a> (professional Catholic portfolio).</span>
+            </div>
+          </div>
+
+          <div class="pill">
+            <div class="dot" style="background:var(--burgundy)"></div>
+            <div>
+              <b>Quiet membership</b>
+              <span>Join privately: no public lists, no pressure, no “in-group” performance.</span>
+            </div>
+          </div>
+
+          <div class="tag">British & Irish context</div>
+          <div class="tag">Neighbourhood fidelity</div>
+          <div class="tag">Mercy & stability</div>
+
+          <p class="mono" style="margin-top:12px;">
+            repo: waylight-catholic-commonwealth<br />
+            (rename from waylight-commonwealth when ready)
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="what" aria-label="What it is">
+      <div class="grid2">
+        <div class="card">
+          <h3>What it is</h3>
+          <p class="muted">
+            The WayLight Catholic Commonwealth is a dispersed community of Catholics who choose—freely and privately—to live by
+            a simple Rule of life inspired by Saint Benedict: prayer, work, order, moderation, and charity, with a steady commitment
+            to one’s actual duties (family, debt, health, employment, parish).
+          </p>
+          <ul>
+            <li><b>A school of stability</b> for life in the world.</li>
+            <li><b>A pattern-library</b> for prayer rhythms, household governance, and simple projects.</li>
+            <li><b>A common language</b> for encouraging one another without pressure or spiritual coercion.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>What it is not</h3>
+          <ul>
+            <li><b>Not</b> a monastery, convent, religious order, or institute.</li>
+            <li><b>Not</b> a place for vows, binding obedience, or directing consciences.</li>
+            <li><b>Not</b> a substitute for parish life, the sacraments, or proper spiritual direction.</li>
+            <li><b>Not</b> a political machine—though it encourages lawful, neighbourly good.</li>
+          </ul>
+          <p class="muted" style="margin-top:10px;">
+            The Commonwealth exists to help people keep faithfulness in the ordinary places where God has already put them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="for" aria-label="Who it’s for">
+      <div class="card">
+        <h3>Who it’s for</h3>
+        <p class="muted">
+          For Catholics who want the steadiness of a Rule but cannot (or should not) enter religious life: those with family duties,
+          health burdens, age, work commitments, financial constraints, or simply a call to remain in the world.
+        </p>
+        <div class="grid2">
+          <div class="ruleBox">
+            <b>Typical realities we respect</b>
+            <ul>
+              <li>debt, rent pressure, benefits, or irregular employment</li>
+              <li>care responsibilities, loneliness, or limited mobility</li>
+              <li>scrupulosity or burnout (we favour moderation and peace)</li>
+              <li>recovering from chaos: household disorder, digital clutter, scattered projects</li>
+            </ul>
+          </div>
+          <div class="ruleBox" style="border-left-color: var(--sea); background:rgba(13,95,106,.06);">
+            <b>What you can expect</b>
+            <ul>
+              <li>small, repeatable rhythms rather than grand resolutions</li>
+              <li>encouragement grounded in Catholic teaching and common sense</li>
+              <li>focus on duties of state in life (family/parish/work)</li>
+              <li>privacy, humility, and neighbourly service</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rule" aria-label="The Rule approach">
+      <div class="card">
+        <h3>The Rule approach</h3>
+        <p class="muted">
+          We take the spirit of Saint Benedict seriously: stability, obedience (as listening), conversion of life, moderation,
+          humility, and peace. In a lay setting this becomes a gentle, practical Rule that supports the sacraments and parish life,
+          rather than competing with them.
+        </p>
+
+        <div class="grid2">
+          <div class="ruleBox">
+            <b>Core commitments (lay adaptation)</b>
+            <ul>
+              <li><b>Prayer:</b> a modest daily office you can actually keep</li>
+              <li><b>Work:</b> faithful labour and honest duties</li>
+              <li><b>Order:</b> household & digital hygiene (small, steady)</li>
+              <li><b>Charity:</b> works of mercy in your neighbourhood</li>
+              <li><b>Stability:</b> staying put in your real responsibilities</li>
+            </ul>
+          </div>
+
+          <div class="ruleBox" style="border-left-color: var(--gold); background:rgba(183,144,47,.08);">
+            <b>Safeguards</b>
+            <ul>
+              <li>no binding vows or imposed “obedience”</li>
+              <li>no public pressure, rankings, or performative holiness</li>
+              <li>no “one size fits all”—prudence and pastoral realism</li>
+              <li>encourages parish sacramental life and lawful conduct</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fineprint">
+          Any written “Rule” offered here is a <b>private lay framework</b>, intended to harmonise with the Church’s teaching and
+          your duties of state in life. When in doubt, your parish priest and sound spiritual counsel take precedence.
+        </p>
+      </div>
+    </section>
+
+    <section id="rhythm" aria-label="A simple rhythm">
+      <div class="grid2">
+        <div class="card">
+          <h3>A simple daily rhythm (example)</h3>
+          <p class="muted">Designed for ordinary life—work, buses, fatigue, family, and reality.</p>
+          <ul>
+            <li><b>Morning:</b> short offering + one psalm / short office</li>
+            <li><b>Midday:</b> Angelus (or brief pause) + one practical task</li>
+            <li><b>Evening:</b> examen + compline (or a short substitute)</li>
+            <li><b>Weekly:</b> Sunday Mass; a “household chapter” (15–30 mins)</li>
+          </ul>
+          <p class="fineprint">
+            The point is not quantity; it is fidelity and peace.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>A household “chapter” (15–30 mins)</h3>
+          <ul>
+            <li>review the week gently (no shame spiral)</li>
+            <li>choose 1–3 small repairs (home, admin, finance, digital)</li>
+            <li>choose one work of mercy (small, local, lawful)</li>
+            <li>set a simple plan for prayer and duties</li>
+          </ul>
+          <p class="fineprint">
+            This mirrors monastic Chapter in spirit: truth, mercy, and practical amendment—without theatrics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="works" aria-label="Works of mercy">
+      <div class="card">
+        <h3>Works of mercy & neighbourhood fidelity</h3>
+        <p class="muted">
+          The Commonwealth exists to produce quiet good: kindness, protection of the vulnerable, practical help, and lawful civic action.
+          We favour local, parish-adjacent, realistic works.
+        </p>
+        <div class="grid2">
+          <div class="ruleBox" style="border-left-color: var(--sea); background:rgba(13,95,106,.06);">
+            <b>Small works that matter</b>
+            <ul>
+              <li>checking in on an elderly neighbour</li>
+              <li>supporting local food banks / SVP efforts</li>
+              <li>volunteering in parish cleaning, welcome, or admin</li>
+              <li>helping someone with forms, CVs, or basic digital setup</li>
+            </ul>
+          </div>
+          <div class="ruleBox">
+            <b>Lawful advocacy (UK context)</b>
+            <ul>
+              <li>supporting dignity-of-life and anti-poverty initiatives</li>
+              <li>writing respectful letters; attending lawful meetings</li>
+              <li>protecting conscience rights in your own workplace</li>
+              <li>standing for good without rancour or factionalism</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" aria-label="Join privately">
+      <div class="card">
+        <h3>Join privately (a quiet path)</h3>
+        <p class="muted">
+          Membership is personal, private, and non-coercive. You can begin without announcement. If you later want community contact,
+          you can opt-in.
+        </p>
+
+        <div class="grid2">
+          <div class="ruleBox" style="border-left-color: var(--gold); background:rgba(183,144,47,.08);">
+            <b>Step 1 — Choose your minimum Rule</b>
+            <ul>
+              <li>one daily prayer anchor (5–15 mins)</li>
+              <li>one daily “order” task (home or digital)</li>
+              <li>one weekly work of mercy</li>
+              <li>Sunday Mass as your fixed point (where possible)</li>
+            </ul>
+          </div>
+
+          <div class="ruleBox" style="border-left-color: var(--sea); background:rgba(13,95,106,.06);">
+            <b>Step 2 — Keep it for 40 days</b>
+            <ul>
+              <li>track quietly (paper, notes, checklist)</li>
+              <li>reduce, don’t inflate</li>
+              <li>seek peace, not perfection</li>
+              <li>if you fall, return gently</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="fineprint">
+          If you have serious spiritual distress (e.g., scrupulosity), the Commonwealth should not replace proper pastoral care.
+        </p>
+      </div>
+    </section>
+
+    <section id="daughter" aria-label="Daughter houses">
+      <div class="card">
+        <h3>Daughter houses (WayLight family sites)</h3>
+        <p class="muted">
+          Other WayLight sites can function like “houses” or “priories”: particular works, projects, or themed spaces that keep the
+          Commonwealth standards and link back here as the Mother House.
+        </p>
+        <ul>
+          <li><b>alanwpgallagher</b> — the founder’s professional Catholic portfolio (five pillars and projects)</li>
+          <li><b>waylight-atlantic</b> — services and practical work</li>
+          <li><b>waylight-companion</b> — tools and templates for daily living</li>
+          <li><b>the-catholic-experiment</b> — a public learning and testimony space</li>
+        </ul>
+        <p class="fineprint">
+          Footer standard (recommended for all “daughter” sites): <span class="mono">This website is part of the WayLight Catholic Commonwealth.</span>
+          linking to this page.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact">
+      <div class="card">
+        <h3>Contact</h3>
+        <p class="muted">
+          For collaboration, corrections, or to quietly opt-in to community contact, reach out.
+        </p>
+        <div class="ctaRow">
+          <!-- Replace with your preferred contact method -->
+          <a class="btn primary" href="mailto:you@example.com?subject=WayLight%20Catholic%20Commonwealth">Email the steward</a>
+          <a class="btn" href="https://alanwpgallagher.info">Visit alanwpgallagher</a>
+        </div>
+
+        <p class="fineprint">
+          Please be patient with replies. The Commonwealth aims to be quiet, steady, and real—not noisy or performative.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+      <div class="muted">
+        © <span id="year"></span> WayLight Catholic Commonwealth • Built and stewarded by <a href="https://alanwpgallagher.info">alanwpgallagher</a>
+      </div>
+      <div class="fineprint">
+        <b>Notice:</b> This site is a private lay initiative inspired by Benedictine spirituality. It is not an official entity of the Catholic Church,
+        does not accept vows, and does not exercise ecclesiastical authority. Always prioritise your parish life and the sacraments.
+      </div>
+      <div class="mono" style="margin-top:10px;">
+        Suggested file: /index.html • Repo rename: waylight-commonwealth → waylight-catholic-commonwealth
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // tiny utility only
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
