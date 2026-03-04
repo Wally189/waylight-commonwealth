@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Commonwealth editorial image two">
+  <rect width="1200" height="900" fill="#eef1ec" />
+  <circle cx="320" cy="300" r="170" fill="#d2dbd6" />
+  <circle cx="850" cy="460" r="220" fill="#c6d2cb" />
+  <rect x="180" y="170" width="840" height="560" fill="none" stroke="#8ea198" stroke-width="3" />
+</svg>

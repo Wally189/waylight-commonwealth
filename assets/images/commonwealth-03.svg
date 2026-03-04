@@ -1,0 +1,5 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Commonwealth editorial image three">
+  <rect width="1200" height="900" fill="#f7f6f1" />
+  <path d="M0 600 C260 520, 470 730, 760 590 C910 520, 1030 430, 1200 480 L1200 900 L0 900 Z" fill="#d8e2dd" />
+  <path d="M0 680 C210 620, 430 760, 680 640 C860 560, 1000 600, 1200 540" stroke="#274a5c" stroke-width="9" fill="none" />
+</svg>
